@@ -2,8 +2,10 @@
 Automasjoner for å oppgradere applikasjoner, slik som java-oppdateringer og oppdateringer av rammeverk.
 
 ## Oversikt
+Se [java-versjoner.md](java-versjoner.md) for oversikten.
+
 [finne-java-versjoner.sh](finne-java-versjoner.sh) finner hvilke java-versjoner som er i bruk i repoene
-via fuzzy find.
+via githubs API og fuzzy find. Resultatet brukes i [lage-oversikt-versjoner.sh](lage-oversikt-versjoner.sh) for å opprette [java-versjoner.md](java-versjoner.md).
 
 ## Java 21
 1. In Visual Studio Code, install _Github Copilot app modernization - upgrade for Java_.
