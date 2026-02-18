@@ -4,6 +4,10 @@
 #   ./finne-java-versjoner.sh
 #   ./finne-java-versjoner.sh --no-cache  # tømmer cache før kjøring
 #
+# Scriptet trenger:
+# - gh CLI: https://cli.github.com/
+# - yq: https://github.com/mikefarah/yq
+#
 # Dokumentasjon code search API:
 # - https://docs.github.com/en/search-github/searching-on-github/searching-code?versionId=free-pro-team%40latest&productId=search-github&restPage=searching-on-github
 # - https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#search-code
