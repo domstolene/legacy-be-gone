@@ -34,7 +34,7 @@ main() {
   if [ "$#" -eq 0 ]; then
     repos=$(alle_repoer)
   else
-    repos="$@"
+    repos="$*"
   fi
 
   for repo in $repos; do
