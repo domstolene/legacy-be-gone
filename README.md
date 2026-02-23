@@ -30,6 +30,10 @@ Det er skrevet en [agent skill](https://agentskills.io/) for Java-oppgradering. 
 
 Dersom utfallet er dårlig, rediger eller legg til nye steg som trengs i [SKILL.md](skills/upgrade-java/SKILL.md).
 
+Dersom du ønsker å unngå at agenten venter på input fra deg, kan du gi det i instruksjonen:
+
+   > upgrade java, case number is GLAD-391
+
 ## Ressurser
 ### OpenReWrite
 https://docs.openrewrite.org
