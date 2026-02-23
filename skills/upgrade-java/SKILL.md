@@ -32,5 +32,5 @@ To upgrade Java to the latest LTS version, follow these steps:
 19. [Upgrade Java version in CI](upgrade-java-version-in-ci.md).
 20. Commit changes.
 21. Open pull request: `gh pr create --head <branch-name> --fill --title "<case number> Upgrade Java to <java version>"`
-22. Check that all checks pass: `gh pr checks`
+22. Check that all checks pass: `gh pr checks --watch`
 
