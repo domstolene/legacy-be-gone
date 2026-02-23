@@ -9,7 +9,13 @@ To upgrade Java to the latest LTS version, follow these steps:
 2. Ask user which case number they want to prefix commit messages with.
 3. Create and check out a new branch named <case number>-<repo-name>-java-<java version>-upgrade.
 4. [Check if project is using Gradle or Maven](find-java-build-tool.md).
-5. [Find latest Gradle version](find-latest-gradle-version.md).
+5. Check latest build tool version:
+  1. If gradle project:
+    1. [Find latest Gradle version](find-latest-gradle-version.md).
+    2. Make sure latest gradle wrapper is used: `./gradlew wrapper --gradle-version <latest gradle version>`
+  2. If maven project:
+    1. [Find latest Maven version](find-latest-maven-version.md).
+    2. Make sure latest maven wrapper is used: `mvn wrapper:wrapper -Dmaven=<latest maven version>`
 6. If kotlin is used, kotlin might need upgrade too: [Find latest Kotlin version](find-latest-kotlin-version.md).
 7. [Find OpenRewrite instructions for the spesific Gradle version](find-openrewrite-gradle-migration-instructions.md)
 8. In root of repo, create a file named gradle-migration-instructions.md and copy the Gradle instructions for the specific Java version into it.
