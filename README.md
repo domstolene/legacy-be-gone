@@ -7,23 +7,28 @@ Se [java-versjoner.md](java-versjoner.md) for oversikten.
 [finne-java-versjoner.sh](finne-java-versjoner.sh) finner hvilke java-versjoner som er i bruk i repoene
 via githubs API og fuzzy find. Resultatet brukes i [lage-oversikt-versjoner.sh](lage-oversikt-versjoner.sh) for å opprette [java-versjoner.md](java-versjoner.md).
 
-## Java 21
-1. In Visual Studio Code, install _Github Copilot app modernization - upgrade for Java_.
-2. Clone relevant repo:
+## Java-oppgradering
+Det er skrevet en [agent skill](https://agentskills.io/) for Java-oppgradering. For å ta den i bruk:
+
+1. Kopier til felles sted for agent-skills:
 
    ```shell
-   gh clone domstolene/repo-with-old-java
+   mkdir -p ~/.copilot/skills
+   cp -r skills/upgrade-java ~/.copilot/skills/
    ```
 
-3. Open repo with Visual Studio Code:
+2. Åpne [Copilot CLI](https://github.com/features/copilot/cli) i et repo:
 
    ```shell
-   code repo-with-old-java
+   cd et/java/repo
+   copilot
    ```
 
-4. Open Copilot chat and instruct it to upgrade the application:
+3. Be agenten om å oppgradere Java:
 
-   > upgrade java runtime to the LTS version Java 21 using java upgrade tools by invoking #generate_upgrade_plan
+   > ugprade java
+
+Dersom utfallet er dårlig, rediger eller legg til nye steg som trengs i [SKILL.md](skills/upgrade-java/SKILL.md).
 
 ## Ressurser
 ### OpenReWrite
