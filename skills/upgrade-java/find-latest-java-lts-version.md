@@ -1,5 +1,5 @@
 # Description
-Find the latest Long Term Support (LTS) Java versions available from Adoptium Temurin.
+Find the latest Long Term Support (LTS) Java versions available from Adoptium Temurin. Per february 2026, Java 25 is the latest LTS.
 
 Requires:
 - curl
