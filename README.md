@@ -14,7 +14,7 @@ Det er skrevet en [agent skill](https://agentskills.io/) for Java-oppgradering. 
 
    ```shell
    mkdir -p ~/.copilot/skills/upgrade-java
-   rsync -a skills/upgrade-java ~/.copilot/skills/upgrade-java
+   rsync -a --delete skills/upgrade-java/ ~/.copilot/skills/upgrade-java/
    ```
 
 2. Åpne [Copilot CLI](https://github.com/features/copilot/cli) i et repo:
