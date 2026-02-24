@@ -10,11 +10,11 @@ via githubs API og fuzzy find. Resultatet brukes i [lage-oversikt-versjoner.sh](
 ## Java-oppgradering
 Det er skrevet en [agent skill](https://agentskills.io/) for Java-oppgradering. For å ta den i bruk:
 
-1. Kopier til felles sted for agent-skills:
+1. Kopier til felles sted for agent-skills, oppdaterer dersom det allerede eksisterer der fra før:
 
    ```shell
-   mkdir -p ~/.copilot/skills
-   cp -r skills/upgrade-java ~/.copilot/skills/
+   mkdir -p ~/.copilot/skills/upgrade-java
+   rsync -a skills/upgrade-java ~/.copilot/skills/upgrade-java
    ```
 
 2. Åpne [Copilot CLI](https://github.com/features/copilot/cli) i et repo:
