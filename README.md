@@ -34,6 +34,28 @@ Dersom du ønsker å unngå at agenten venter på input fra deg, kan du gi det i
 
    > upgrade java, case number is GLAD-391
 
+## Bruke siste java-versioner av bibliotek
+AI-koding har tedens til å bruke gamle versjoner, fordi cutoff for treningen er noen år tilbake i tid.
+Skillen _upgrade-gradle-dependencies_ sørger for at når nye bibliotek legges til, brukes siste versjon
+av avhengigheten.
+
+Installere:
+
+```shell
+mkdir -p ~/.copilot/skills/upgrade-gradle-dependencies
+rsync -a --delete skills/upgrade-gradle-dependencies/ ~/.copilot/skills/upgrade-gradle-dependencies/
+```
+
+## Bruke siste versjoner av Github workflows
+
+Installere:
+
+```shell
+mkdir -p ~/.copilot/skills/upgrade-github-workflows
+rsync -a --delete skills/upgrade-github-workflows/ ~/.copilot/skills/upgrade-github-workflows/
+```
+
+
 ## Ressurser
 ### OpenReWrite
 https://docs.openrewrite.org
