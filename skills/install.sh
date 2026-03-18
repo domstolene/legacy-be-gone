@@ -10,6 +10,7 @@ echo "Adding symbolic links for all skills in $skills_folder to $HOME/.copilot/s
 
 for skill in $skills; do
     skill_name=$(basename "$skill")
+    skill_folder=$(realpath "$skill")
     target_folder="$HOME/.copilot/skills/$skill_name"
 
     # check if symolic link already exists, if it does, skip installation
@@ -19,5 +20,5 @@ for skill in $skills; do
     fi
 
     echo "Installing skill: $skill_name to $target_folder"
-    ln -s "$skill" "$target_folder"
+    ln -s "$skill_folder" "$target_folder"
 done
