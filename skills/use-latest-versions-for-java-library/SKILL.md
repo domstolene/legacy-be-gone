@@ -18,5 +18,6 @@ Given a Java dependency, steps here will help you find latest versions of the de
      This will show you all versions of the dependency, latest first.
 
 3. If dependency already exists in project, try first latest major version.
-4. Run `./gradlew build` or `mvn clean install` to ensure that the project compiles with the new dependency.
-5. If build fails, try the next latest version, and repeat until you find a version that works. If no version works, there might be a compatibility issue with the project that needs to be investigated further.
+4. If you find pinned versions for dependencies that are bundled with spring boot bill of materials (BOM), for example `io.micrometer:micrometer-registry-prometheus`, remove the pinned version such that the version will be updated along spring boot version updates.
+5. Run `./gradlew build` or `mvn clean install` to ensure that the project compiles with the new dependency.
+6. If build fails, try the next latest version, and repeat until you find a version that works. If no version works, there might be a compatibility issue with the project that needs to be investigated further.
