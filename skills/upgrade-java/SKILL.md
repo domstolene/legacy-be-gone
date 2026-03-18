@@ -3,6 +3,12 @@ name: upgrade-java
 description: Upgrade Java to the latest LTS version.
 ---
 
+Before attempting to upgrade, check if project uses da-otel-agent, as it is not compatible with Java 25 yet. Any
+
+```shell
+rg da-otel-agent && echo "da-otel-agent found, not compatible with Java 25 yet, stop upgrade"
+```
+
 To upgrade Java to the latest LTS version, follow these steps:
 
 1. [Find latest Java LTS version](find-latest-java-lts-version.md).
