@@ -65,8 +65,24 @@ To setup opentelemetry tracing for an application, do these steps:
 5. Add the service name for the application:
 
    ```Dockerfile
-   # navn på tjenesten, typisk navn som git-repoet
+   # navn på tjenesten i sporingsoppsettet
    ENV OTEL_SERVICE_NAME=drl-web-api
    ```
+
+6. Make sure agent are added to start parameters.
+
+  1. If the .jar file is started directly with `java -jar`, make sure `JAVA_OPTS` is included in the startup, and add `-javaagent` to `JAVA_OPTS`:
+
+     ```Dockerfile
+     # legg til oppstarts-parameter for sporing-agenten
+     ENV JAVA_OPTS="-javaagent:/app/da-opentelemetry-javaagent.jar ${JAVA_OPTS}"
+     ```
+
+  2. Or, alternatively, if the application starts with `ENTRYPOINT [ "./service" ]`, add the startup parameter in `SERVICE_OPTS`:
+
+     ```Dockerfile
+     # legg til oppstarts-parameter for sporing-agenten
+     ENV SERVICE_OTPS="-javaagent:/app/da-opentelemetry-javaagent.jar ${SERVICE_OPTS}"
+     ```
 
 Note: Comments in Dockerfile are in Norwegian, as the target audience is developers in Domstolene.
