@@ -33,20 +33,10 @@ To upgrade Java to the latest LTS version, follow these steps:
 14. Commit changes.
 15. [Upgrade Java version in containers](upgrade-java-version-in-containers.md).
 16. Commit changes.
-17. Check if project uses da-otel-agent:
-
-    ```shell
-    rg da-otel-agent
-    ```
-
-    If so, make sure latest version of da-otel-agent is used:
-
-   Find latest da-otel-agent:
-   ```shell
-   gh release view --repo domstolene/da-otel-agent
-   ```
-18. [Upgrade Java version in CI](upgrade-java-version-in-ci.md).
-19. Commit changes.
-20. Open pull request: `gh pr create --head <branch-name> --fill --title "<case number> Upgrade Java to <java version>"`
-21. Check that all checks pass: `gh pr checks --watch`
+17. Use skill `configure-opentelemetry-agent` to upgrade, add or update configuration for da-otel-agent.
+18. Commit changes.
+19. [Upgrade Java version in CI](upgrade-java-version-in-ci.md).
+20. Commit changes.
+21. Open pull request: `gh pr create --head <branch-name> --fill --title "<case number> Upgrade Java to <java version>"`
+22. Check that all checks pass: `gh pr checks --watch`
 
