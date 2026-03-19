@@ -11,3 +11,4 @@ Keep both pom.xml and build.gradle.kts files, such that installation can be veri
 3. Check if kotlin files are found in project: `fd .kt`. If so, application type is kotlin-application, otherwise java-application.
 4. Run `gradle init --dsl kotlin --type <application type>`. Select to keep both pom.xml and build.gradle.kts files when prompted.
 5. Verify that both `mvn clean install` and `./gradlew build` runs successfully and produces same results.
+6. Update documentation to use gradle commands instead of maven commands. You can find documentation by searching for maven commands: `rg "mvn "`
