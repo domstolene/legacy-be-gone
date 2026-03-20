@@ -71,18 +71,26 @@ To setup opentelemetry tracing for an application, do these steps:
 
 6. Make sure agent are added to start parameters.
 
-  1. If the .jar file is started directly with `java -jar`, make sure `JAVA_OPTS` is included in the startup, and add `-javaagent` to `JAVA_OPTS`:
+  1. If the .jar file is started directly with `java -jar`, make sure `JAVA_OPTS` is included in the startup, and add `-javaagent`:
 
      ```Dockerfile
-     # legg til oppstarts-parameter for sporing-agenten
-     ENV JAVA_OPTS="-javaagent:/app/da-opentelemetry-javaagent.jar ${JAVA_OPTS}"
+     # Merk,
+     # 1. JSON-syntax ["kommando", "arg"] gir oss kontroll over hvordan prosessen startes,
+     #    der "ENTRYPOINT kommando arg" implisitt kjører 'sh -c "kommando arg"'
+     # 2. Implisitt "sh -c" gjør at signaler som SIGTERM ikke sendes videre til java-prosessen,
+     #    og dermed ikke trigger en ryddig nedstenging av tjenesten
+     # 3. "exec" i sh-kommandoen gjør at java-prosessen erstatter sh-prosessen,
+     #    og dermed får signaler som SIGTERM direkte, og kan rydde opp før nedstenging
+     # 4. JAVA_OPTS kan være tom, siden den evalueres i "sh -c", og gir oss mulighet
+     #    til å legge til ekstra JVM-opsjoner i kjøremiljøet uten å måtte bygge nytt docker image
+     ENTRYPOINT ["/bin/sh", "-c", "exec java ${JAVA_OPTS} -javaagent:da-opentelemetry-javaagent.jar -jar name-of-app.jar"]
      ```
 
   2. Or, alternatively, if the application starts with `ENTRYPOINT [ "./service" ]`, add the startup parameter in `SERVICE_OPTS`:
 
      ```Dockerfile
      # legg til oppstarts-parameter for sporing-agenten
-     ENV SERVICE_OTPS="-javaagent:/app/da-opentelemetry-javaagent.jar ${SERVICE_OPTS}"
+     ENV SERVICE_OTPS="-javaagent:/app/da-opentelemetry-javaagent.jar"
      ```
 
 Note: Comments in Dockerfile are in Norwegian, as the target audience is developers in Domstolene.
