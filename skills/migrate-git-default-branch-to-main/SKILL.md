@@ -23,13 +23,7 @@ gh repo clone <owner/repo>
 cd repo || exit
 ```
 
-6. Create a new branch called main:
-
-```shell
-git checkout -b main
-```
-
-7. Find any references to `develop` or `master` in the codebase, and change them to `main`:
+6. Find any references to `develop` or `master` in the codebase, and change them to `main`:
 
 ```shell
 rg --hidden --glob '!.git' develop
@@ -37,22 +31,28 @@ rg --hidden --glob '!.git' develop
 
 Exceptions: versions in gradle/maven files, like `build.gradle` or `pom.xml` should not be changed.
 
-8. Commit and push the changes:
+7. Create a branch, commit the changes and create a pull request:
 
 ```shell
+git checkout -b <case number>-main-som-standard-branch
 git add .
 git commit -m "<case number> Change default branch to main"
-git push -u origin main
+gh pr create --title "<case number> main som default branch" --body "Endrer default branch til main. Alle referanser til develop/master er endret til main.
+
+Refs: <case number>"
+" --base develop
 ```
 
-9. Change default branch in Github:
+8. Merge pull request using admin priveleges, and delete branch after merge:
 
 ```shell
-gh repo edit --default-branch main
+gh pr merge --admin --delete-branch
 ```
 
-10. Update remote to get new HEAD reference:
+9. Rename default branch to main:
 
 ```shell
-git remote set-head origin --auto
+gh api repos/{owner}/{repo}/branches/develop/rename -f new_name=main
 ```
+
+10. Write summary to console in Slack markup format, with link to PR.
