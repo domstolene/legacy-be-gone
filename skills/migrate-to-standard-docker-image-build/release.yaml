@@ -1,0 +1,42 @@
+name: Release - Build docker images on releases
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          java-version-file: .java-version
+          distribution: temurin
+          cache: gradle
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build, test and package
+        run: ./gradlew build --no-daemon -PreleaseVersion=${{ github.event.release.tag_name }}
+
+      - name: Login to ghcr.io/domstolene
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io/domstolene
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build lastest docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/domstolene/<repository-name>:${{ github.event.release.tag_name }}

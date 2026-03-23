@@ -38,5 +38,13 @@ To migrate a project to use our standard docker image build, follow these steps:
    }
    ```
 
-5. Find default git branch, change to `main` if it is `master` or `develop`, such that we can standardize on pushing docker images when commits are made to main branch. `git symbolic-ref refs/remotes/origin/HEAD` will show you which branch is default.
-5. Find CI-workflows and edit it to use checkout, setup-java, setup-gradle, gradle build and docker build that pushes when commits are made to main branch. Example: [ci-workflow-for-docker-build.yaml](ci-workflow-for-docker-build.yaml).
+5. Edit github workflows to contain the three types:
+   a. CI workflow that compiles and tests the code on pull requests. [pr-compile-and-test.yaml](pr-compile-and-test.yaml).
+   b. CD workflow that builds and pushes docker images on commits to main branch. [cd-build-main-docker-image.yaml](cd-build-main-docker-image.yaml).
+   c. Release workflow that builds and pushes docker images on releases. [release.yaml](release.yaml).
+
+6. Make sure `build.gradle.kts` uses property `releaseVersion` to set the version of the application:
+
+   ```kotlin
+   version = project.findProperty("releaseVersion") ?: "develop"
+   ```
