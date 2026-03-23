@@ -23,11 +23,13 @@ gh repo clone <owner/repo>
 cd repo || exit
 ```
 
-6. Find any references to `develop` or `master` in the codebase, and change them to `main`:
+6. Find any references to default branch, for example `develop` or `master`, in the codebase, and change them to `main`:
 
 ```shell
 rg --hidden --glob '!.git' develop
 ```
+
+Links should be change also, for example https://github.com/domstolene/repo-name/tree/develop/minikube -> https://github.com/domstolene/repo-name/tree/main/minikube
 
 Exceptions: versions in gradle/maven files, like `build.gradle` or `pom.xml` should not be changed.
 
