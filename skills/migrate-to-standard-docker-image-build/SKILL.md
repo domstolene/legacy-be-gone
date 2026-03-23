@@ -43,6 +43,8 @@ To migrate a project to use our standard docker image build, follow these steps:
    b. CD workflow that builds and pushes docker images on commits to main branch. [cd-build-main-docker-image.yaml](cd-build-main-docker-image.yaml).
    c. Release workflow that builds and pushes docker images on releases. [release.yaml](release.yaml).
 
+   Make sure docker image tag is the same as they where before. For example if :latest was used, do not change til :main.
+
 6. Make sure `build.gradle.kts` uses property `releaseVersion` to set the version of the application:
 
    ```kotlin

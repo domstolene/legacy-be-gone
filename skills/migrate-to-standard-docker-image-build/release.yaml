@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build:
+  build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -39,4 +39,42 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/domstolene/<repository-name>:${{ github.event.release.tag_name }}
+          tags: ghcr.io/domstolene/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}
+
+  create-deploy-pull-requests:
+    needs: build-and-push-image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout k8s-applications
+        uses: actions/checkout@v6
+        with:
+          repository: 'domstolene/k8s-applications'
+          ref: 'main'
+          token: ${{ secrets.REPO_PAT }}
+
+      - name: Update deployment version in k8s-applications
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+        run: |
+          repo=${{ github.event.repository.name }}
+          version=${{ github.event.release.tag_name }}
+
+          for ENV in "AT" "PROD"; do
+            env_lower_case=$(echo $ENV | tr '[:upper:]' '[:lower:]')
+            PR_BRANCH="deploy-$env_lower_case-$version"
+            git checkout -b $PR_BRANCH main
+
+            sed -i "s/newTag: .*/newTag: \"$version\"/g" applications/$repo/$env_lower_case/kustomization.yaml
+            git add .
+            git -c user.name="$GITHUB_ACTOR" -c user.email="github-actions@github.com" commit -m "Deploy $repo $version to $ENV"
+            git push --set-upstream origin $PR_BRANCH
+
+            PR_BODY=$(echo -e "Oppdaterer applikasjonen $repo til versjon [$version](https://github.com/domstolene/$repo/releases/tag/$version) i miljøet $ENV:\n\n${{ github.event.release.body }}")
+
+            gh pr create --draft --head $PR_BRANCH --base main --assignee "${{ github.actor }}" \
+              --title "Deploy $repo $version to $ENV" \
+              --body "$PR_BODY"
+          done
