@@ -1,5 +1,5 @@
 ---
-name: migrate-to-standard-docker-image-build
+name: migrate-git-default-branch-to-main
 description: Migrate a github repository to use `main` as default branch.
 ---
 
