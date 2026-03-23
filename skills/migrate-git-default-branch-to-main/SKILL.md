@@ -29,7 +29,7 @@ cd repo || exit
 rg --hidden --glob '!.git' develop
 ```
 
-Links should be change also, for example https://github.com/domstolene/repo-name/tree/develop/minikube -> https://github.com/domstolene/repo-name/tree/main/minikube
+Links should be change also, for example https://github.com/domstolene/repo-name/tree/develop/minikube -> https://github.com/domstolene/repo-name/tree/main/minikube. Links for other repos then <owner/repo> should not be changed!
 
 Exceptions: versions in gradle/maven files, like `build.gradle` or `pom.xml` should not be changed.
 
