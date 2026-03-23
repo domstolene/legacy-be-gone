@@ -48,3 +48,5 @@ To migrate a project to use our standard docker image build, follow these steps:
    ```kotlin
    version = project.findProperty("releaseVersion") ?: "develop"
    ```
+
+7. Make sure the file .java-version exists and contains same version as build.gradle.kts.
