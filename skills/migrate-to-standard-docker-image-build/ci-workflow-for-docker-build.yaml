@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
   pull_request:
-    branches: [develop]
+    branches: [main]
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
         run: mvn --batch-mode --update-snapshots verify
 
       - name: Package, build jar
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: mvn package -DskipTests
 
       - name: Login to ghcr.io/domstolene
@@ -44,7 +44,7 @@ jobs:
 
       - name: Build lastest docker image
         uses: docker/build-push-action@v4
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           context: .
           push: true
