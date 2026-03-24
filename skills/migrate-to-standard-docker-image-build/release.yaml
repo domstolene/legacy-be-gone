@@ -25,6 +25,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: Build, test and package
+        env:
+          # Github Workflows støtter ikke token med read:packages på organisasjonsnivå for maven-pakker,
+          # derfor må vi bruke et personlig access token med tilgang til read:packages på organisasjonsnivå
+          # https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages
+          GITHUB_TOKEN: ${{ secrets.CR_READ_PAT }}
         run: ./gradlew build --no-daemon -PreleaseVersion=${{ github.event.release.tag_name }}
 
       - name: Login to ghcr.io/domstolene
