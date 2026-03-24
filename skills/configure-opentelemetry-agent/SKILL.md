@@ -36,7 +36,7 @@ To setup opentelemetry tracing for an application, do these steps:
    #      -e OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf \
    #      <docker-image> # for eksempel ghcr.io/domstolene/drl-web-api:latest
    #
-   ADD --chmod 644 https://github.com/domstolene/da-otel-agent/releases/download/<versionsnummer>/da-opentelemetry-javaagent.jar da-opentelemetry-javaagent.jar
+   ADD --chmod=644 https://github.com/domstolene/da-otel-agent/releases/download/<versionsnummer>/da-opentelemetry-javaagent.jar da-opentelemetry-javaagent.jar
    ```
 
 4. Add standard configuration:

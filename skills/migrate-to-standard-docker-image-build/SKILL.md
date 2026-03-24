@@ -9,7 +9,7 @@ To migrate a project to use our standard docker image build, follow these steps:
 2. Make sure the docker build copies the jar file to the image with `ADD`:
 
    ```Dockerfile
-   ADD --chmod 644 build/libs/*.jar name-of-app.jar
+   ADD --chmod=644 build/libs/*.jar name-of-app.jar
    ```
 
 3. If ENTRYPOINT is set to `java -jar`, make sure use this entrypoint:
