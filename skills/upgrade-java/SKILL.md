@@ -13,9 +13,7 @@ To upgrade Java to the latest LTS version, follow these steps:
   1. If gradle project:
     1. [Find latest Gradle version](find-latest-gradle-version.md).
     2. Make sure latest gradle wrapper is used: `./gradlew wrapper --gradle-version <latest gradle version>`
-  2. If maven project:
-    1. [Find latest Maven version](find-latest-maven-version.md).
-    2. Make sure latest maven wrapper is used: `mvn wrapper:wrapper -Dmaven=<latest maven version>`
+  2. If maven project, use skill `migrate-to-gradle` to migrate project to gradle first.
 6. If kotlin is used, kotlin might need upgrade too: [Find latest Kotlin version](find-latest-kotlin-version.md).
 7. [Find OpenRewrite instructions for the spesific Gradle version](find-openrewrite-gradle-migration-instructions.md)
 8. Do migration steps as per OpenRewrite instructions.
