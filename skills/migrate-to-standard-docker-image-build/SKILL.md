@@ -52,3 +52,4 @@ To migrate a project to use our standard docker image build, follow these steps:
    ```
 
 7. Make sure the file .java-version exists and contains same version as build.gradle.kts.
+8. Give feedback to user, make sure repo has access to write to image, output link to user with explaination in norwegian: https://github.com/orgs/domstolene/packages/container/<repo-name>/settings
