@@ -28,13 +28,15 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
 
-      - name: Build, test and package
+      - name: Build and assemble
         env:
           # Github Workflows støtter ikke token med read:packages på organisasjonsnivå for maven-pakker,
           # derfor må vi bruke et personlig access token med tilgang til read:packages på organisasjonsnivå
           # https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages
           GITHUB_TOKEN: ${{ secrets.CR_READ_PAT }}
-        run: ./gradlew build --no-daemon
+        # Vi bruker med vilje assemble her for å få raskest mulig leveranse.
+        # Testene vil kjøre på PR, som burde være tilstrekkelig for å fange opp feil i koden før det merges til main.
+        run: ./gradlew assemble --no-daemon
 
       - name: Login to ghcr.io/domstolene
         uses: docker/login-action@v4
