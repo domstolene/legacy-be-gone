@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
 
+# når vi merger flere pr til main samtidig, ønsker vi at siste merge vinner og at de andre byggene avbrytes
 concurrency:
   group: cd-build-main-docker-image-${{ github.ref }}
   cancel-in-progress: true
