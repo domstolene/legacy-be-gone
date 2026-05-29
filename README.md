@@ -8,6 +8,7 @@ Se [java-versjoner.md](java-versjoner.md) for oversikten.
 via githubs API og fuzzy find. Resultatet brukes i [lage-oversikt-versjoner.sh](lage-oversikt-versjoner.sh) for å opprette [java-versjoner.md](java-versjoner.md).
 
 ## Skills
+En skill er en gjenbrukbar instruks som forteller agenten hvordan en spesifikk oppgave skal løses steg for steg.
 Det er skrevet flere [agent skills](https://agentskills.io/) for håndtere kodearbeidet med java-oppgraderinger, mm.
 
 ### Installere
@@ -61,6 +62,10 @@ For å prøve å gi agenten bedre kontekst finnes disse ferdighetene:
 ### Bruke siste versjoner av Github workflows
 
 [upgrade-github-workflows](skills/upgrade-github-workflows/SKILL.md) ser gjennom alle workflows, finner siste release for de og oppgraderer workflowene.
+
+### Oppdatere README
+
+[oppdatere-readme](skills/oppdatere-readme/SKILL.md) hjelper med å forbedre README for en applikasjon ved å legge til formål, relevante miljø-URL-er og en enkel testguide.
 
 
 ## Nyttige lenker
