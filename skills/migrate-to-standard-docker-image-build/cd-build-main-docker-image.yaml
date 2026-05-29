@@ -50,4 +50,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/domstolene/<repository-name>:main
+          tags: ghcr.io/domstolene/${{ github.event.repository.name }}:main
