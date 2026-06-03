@@ -7,7 +7,7 @@ To migrate a project to use our standard docker image build, follow these steps:
 
 1. Find the Dockerfile(s) in the project: `fd "(Docker|Container)file" --type f`
 2. Docker image should be built from `docker.io/eclipse-temurin:25-jre` for Java 25.
-3. Use skill configure-opentelemetry-agent to setup telemetry.
+3. Use skill `configure-opentelemetry-agent` to setup telemetry.
 4. Make sure the docker build copies the jar file to the image with `ADD`:
 
    ```Dockerfile

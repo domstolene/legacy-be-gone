@@ -28,7 +28,7 @@ Dersom README.md allerede inneholder en beskrivelse, vurder om den kan forbedres
 
 
 ## URL til applikasjonen i testmiljø
-Finn mest sannsynlige URL for applikasjonen i testmiljø ved å søke etter dens navn i https://github.com/domstolene/k8s-applications/blob/main/infrastructure/istio/test/kustomization.yaml
+Finn mest sannsynlige URL for applikasjonen i testmiljø ved å søke etter dens navn i https://github.com/domstolene/k8s-applications/
 
 Dersom den ikke eksisterer der, prøv å finne Route direkte i OpenShift:
 
