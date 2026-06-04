@@ -5,11 +5,13 @@ description: Upgrade GitHub workflows to use latest versions of actions and tool
 
 To upgrade GitHub workflows to use the latest versions of actions and tools, follow these steps:
 
-1. List all Github workflows in the repository by running the following command in the terminal:
+1. Use user submitted workflow or list all Github workflows in the repository by running the following command in the terminal:
 
    ```shell
    fd --type f --glob "*.yml" --glob "*.yaml" .github/workflows/
    ```
+
+   If no workflows are found, ask user to provide one or multiple workflows to upgrade.
 
 2. For each workflow file, find all actions used in the workflow by looking for lines that contain `uses:`, and extract the action name and version. You can use the following command to do this:
 
