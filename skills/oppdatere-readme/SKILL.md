@@ -7,7 +7,7 @@ description: Legger til relevant dokumentasjon for applikasjoner i domstolene. F
 Før du starter med å hente inn informasjon, sjekk om mappen .codegraph/codegraph.db finnes i repoet. Hvis ikke, kjør init: `codegraph init -i`
 
 # Hente informasjon fra nettsteder
-Informasjonen fra nettsteder krever innlogging, bruk safari mcp når du skal hente informasjon fra nettsteder, slik at jeg kan logge inn manuelt.
+Informasjonen fra nettsteder krever innlogging, bruk safari mcp når du skal hente informasjon fra nettsteder, slik at jeg kan logge inn manuelt. Start med `safari_new_tab` og gjenbruk den samme fanen for alle nettsider du trenger å navigere til. Ikke se på andre faner enn den du har åpnet selv.
 
 # Innhold i readme
 En README.md skal inneholde:
@@ -40,9 +40,11 @@ oc get route --all-namespaces | grep <applikasjonsnavn>
 Legg URL-en under `## URL-er`.
 
 ## URL til applikasjonen i k8s-applications
-Se om du finner applikasjonen i https://github.com/domstolene/k8s-applications/tree/main/applications. Bruk image-navnet for å finne applikasjonen, dersom det ikke er åpenbart ut fra navnet på mappen.
+Finn `k8s-applications` repo lokalt med: `zoxide query k8s-applications`
 
-Eksempel URL for applikasjonen 'aktorportalen': https://github.com/domstolene/k8s-applications/tree/main/applications/aktorportalen
+Se om du finner applikasjonen i applications mappen. Bruk image-navnet for å finne applikasjonen, dersom det ikke er åpenbart ut fra navnet på applikasjonsmappen.
+
+Eksempel URL for applikasjonen 'aktorportalen' som finnes i 'k8s-applications/applications/aktorportalen': https://github.com/domstolene/k8s-applications/tree/main/applications/aktorportalen
 
 Legg URL-en under `## URL-er`.
 
