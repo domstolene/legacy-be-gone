@@ -23,12 +23,13 @@ To upgrade Java to the latest LTS version, follow these steps:
 12. Do migration steps as per OpenRewrite instructions.
 13. Make sure project compiles with `./gradlew build`, fix any errors.
 14. Commit changes.
-15. [Upgrade Java version in containers](upgrade-java-version-in-containers.md).
+15. Use skill `migrate-to-standard-docker-image-build` to upgrade, add or update configuration for da-otel-agent.
 16. Commit changes.
-17. Use skill `configure-opentelemetry-agent` to upgrade, add or update configuration for da-otel-agent.
+17. [Upgrade Java version in containers](upgrade-java-version-in-containers.md).
 18. Commit changes.
 19. [Upgrade Java version in CI](upgrade-java-version-in-ci.md).
 20. Commit changes.
 21. Open pull request: `gh pr create --head <branch-name> --fill --title "<case number> Upgrade Java to <java version>"`
 22. Check that all checks pass: `gh pr checks --watch`
+23. Run skill `check-run-configuration`.
 
