@@ -9,7 +9,7 @@ Test files should be in src/test/e2e and named <test-name>.spec.ts, for example 
 
 Find and copy prometheus-reporter into src/test/e2e from local filesystem: `cp (fd prometheus-reporter (zoxide query lovisa_core)) src/test/e2e/`.
 
-Also create a github workflow from [e2e.yaml](e2e.yaml) for the tests, it should run with specific runner: "runs-on: workflow-runner-test". The workflow should upload html result to github pages as artifact.
+Also create a github workflow from [e2e-test.yaml](e2e-test.yaml) for the tests, it should run with specific runner: "runs-on: workflow-runner-test". The workflow should upload html result to github pages as artifact.
 
 I want a new endpoint /version that provides information about which version is running (main or release) and the git commit sha for it. The e2e workflow should wait for the correct version (git sha) to be running before Playwright runs. Add an appropriate timeout so the workflow is not stopped. The build must include the version information in the jar file.
 
