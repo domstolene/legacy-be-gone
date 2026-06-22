@@ -54,7 +54,7 @@ git branch -D $saksnummer-$applikasjonsnavn-automatisk-utrulling-i-test
 Merge til main gir nytt image `ghcr.io/domstolene/<applikasjonsnavn>:main` som rulles automatisk ut i testmiljøet. Når en er klar for akseptansetestmiljøet, lag en release:
 
 ```shell
-gh release create v2.2.0
+gh release create v2.2.0 --generate-notes
 ```
 
 Releasen vil starte [en workflow som produserer imaget `ghcr.io/domstolene/<applikasjonsnavn>:v2.2.0`](.github/workflows/cd-build-main-docker-image.yaml) og en pull-request i k8s-applications for å oppdatere image i akseptansetest- og produksjonsmiljø.
