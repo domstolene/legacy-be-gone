@@ -4,6 +4,11 @@ on:
   release:
     types: [published]
 
+# dersom vi oppretter flere releases raskt, ønsker vi at siste release vinner og at det første bygget avbrytes
+concurrency:
+  group: release
+  cancel-in-progress: true
+
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
