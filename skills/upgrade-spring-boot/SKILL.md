@@ -44,5 +44,5 @@ rootProject {
 6. Commit work.
 7. Use `use-latest-versions-for-java-library` to upgrade all dependencies.
 8. Commit work.
-9. Check if application still runs (compared to baseline).
+9. Check if application still runs (compared to baseline); `./gradlew bootRun`.
 10. Report back to user what have been done and result. Include commits.
