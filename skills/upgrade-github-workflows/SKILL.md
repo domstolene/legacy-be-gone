@@ -16,7 +16,7 @@ To upgrade GitHub workflows to use the latest versions of actions and tools, fol
 2. For each workflow file, find all actions used in the workflow by looking for lines that contain `uses:`, and extract the action name and version. You can use the following command to do this:
 
    ```shell
-   rg "uses:" .github/workflows/*.yml | sed -E 's|.*uses:\s*([^@]+)@([^ ]+).*|\1 \2|g'
+   rg "uses:" .github/workflows/*.y*ml | sed -E 's|.*uses:\s*([^@]+)@([^ ]+).*|\1 \2|g'
    ```
 
    This will give you a list of actions and their versions used in the workflows.
