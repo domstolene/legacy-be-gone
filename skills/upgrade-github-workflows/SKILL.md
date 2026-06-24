@@ -30,5 +30,7 @@ To upgrade GitHub workflows to use the latest versions of actions and tools, fol
     Replace `<owner>` and `<repo>` with the owner and repository name of the action, for example:
 
     ```shell
-    curl --silent https://api.github.com/repos/actions/checkout/releases/latest | jq -r .tag_name
+    curl --silent https://api.github.com/repos/actions/checkout/releases/latest | jq -r .tag_name | cut -d. -f1
     ```
+
+Only major versions are relevant for this skill, so we cut the version string to only include the major version.
