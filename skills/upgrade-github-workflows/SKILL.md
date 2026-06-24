@@ -8,7 +8,7 @@ To upgrade GitHub workflows to use the latest versions of actions and tools, fol
 1. Use user submitted workflow or list all Github workflows in the repository by running the following command in the terminal:
 
    ```shell
-   fd --type f --glob "*.yml" --glob "*.yaml" .github/workflows/
+   fd --type f --glob '*.y*ml' .github/workflows/
    ```
 
    If no workflows are found, ask user to provide one or multiple workflows to upgrade.
@@ -16,7 +16,7 @@ To upgrade GitHub workflows to use the latest versions of actions and tools, fol
 2. For each workflow file, find all actions used in the workflow by looking for lines that contain `uses:`, and extract the action name and version. You can use the following command to do this:
 
    ```shell
-   rg "uses:" .github/workflows/*.y*ml | sed -E 's|.*uses:\s*([^@]+)@([^ ]+).*|\1 \2|g'
+   rg "uses:" .github/workflows/ | sed -E 's|.*uses:\s*([^@]+)@([^ ]+).*|\1 \2|g'
    ```
 
    This will give you a list of actions and their versions used in the workflows.
@@ -24,11 +24,11 @@ To upgrade GitHub workflows to use the latest versions of actions and tools, fol
 3. For each action, check if there is a newer version available in Github relases with:
 
     ```shell
-    gh release list --repo <owner>/<repo> --limit 1 --json tagName --jq '.[0].tagName'
+    curl --silent https://api.github.com/repos/<owner>/<repo>/releases/latest | jq -r .tag_name
     ```
 
     Replace `<owner>` and `<repo>` with the owner and repository name of the action, for example:
 
     ```shell
-    gh release list --repo actions/checkout --limit 1 --json tagName --jq '.[0].tagName'
+    curl --silent https://api.github.com/repos/actions/checkout/releases/latest | jq -r .tag_name
     ```
