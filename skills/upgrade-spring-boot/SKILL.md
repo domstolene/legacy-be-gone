@@ -41,7 +41,7 @@ rootProject {
 3. Run script using gradle: `gradle --init-script init.gradle rewriteRun`
 4. Use `curl --silent https://api.github.com/repos/spring-projects/spring-boot/releases/latest | jq -r .tag_name` to find latest spring-boot release.
 5. Update build.gradle.kts to use latest versjon of spring-boot.
-6. Commit work.
+6. Commit work. Delete init.gradle script, do not commit it.
 7. Use `use-latest-versions-for-java-library` to upgrade all dependencies.
 8. Commit work.
 9. Check if application still runs (compared to baseline); `./gradlew bootRun`.
